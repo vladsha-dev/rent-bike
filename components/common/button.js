@@ -28,7 +28,7 @@ const Button = ({
     const fieldId = id;
     try {
       const deleted = await fetch(
-        `http://localhost:3000/api/notes/${fieldId}`,
+        `https://rent-bike.vercel.app/api/notes/${fieldId}`,
         {
           method: "Delete",
         }
@@ -40,17 +40,20 @@ const Button = ({
   const rentBicycle = async () => {
     const fieldId = id;
     try {
-      const res = await fetch(`http://localhost:3000/api/notes/${fieldId}`, {
-        method: "PUT",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          isRented: isRenting,
-          dateStartRent: Date.now(),
-        }),
-      });
+      const res = await fetch(
+        `https://rent-bike.vercel.app/api/notes/${fieldId}`,
+        {
+          method: "PUT",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            isRented: isRenting,
+            dateStartRent: Date.now(),
+          }),
+        }
+      );
     } catch (error) {
       console.log(error);
     }
@@ -58,14 +61,17 @@ const Button = ({
   const cancelBicycle = async () => {
     const fieldId = id;
     try {
-      const res = await fetch(`http://localhost:3000/api/notes/${fieldId}`, {
-        method: "PUT",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ isRented: false, dateStartRent: null }),
-      });
+      const res = await fetch(
+        `https://rent-bike.vercel.app/api/notes/${fieldId}`,
+        {
+          method: "PUT",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ isRented: false, dateStartRent: null }),
+        }
+      );
     } catch (error) {
       console.log(error);
     }
